@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Main Menu.unity
     guid: 66b29201a85ada74da35c103a230ecc2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Management.unity
     guid: ff450bd865089ab4c824da47854c0123
   - enabled: 1
     path: Assets/Naval Combat.unity
     guid: 445e348fbca42e44480dad588d33af48
+  - enabled: 1
+    path: Assets/Market.unity
+    guid: e147c5dfb48017447bc6a008c9f52538
+  - enabled: 1
+    path: Assets/Shipyard.unity
+    guid: 9d2f975b306c097419ef568c553edcdb
