@@ -5,12 +5,44 @@ using UnityEngine;
 public class SeaGen : MonoBehaviour {
     GameObject SeaChunk;
 	// Use this for initialization
-	void Start () {
-        GameObject.Find("Sea/Sea Chunk"); //chunks are made of 3x3 tiles, 4x4 in size  
+	void Start ()
+    {
+       SeaChunk = GameObject.Find("Sea/Sea Chunk"); //chunks are made of 3x3 tiles, 4x4 in size
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        try
+        {
+            Vector2 chunk = Physics2D.OverlapPoint(GameObject.Find("Player_Ship").transform.position).transform.parent.position;
+            GenerateSea(chunk + new Vector2(12,0));
+            GenerateSea(chunk + new Vector2(-12,0));
+            GenerateSea(chunk + new Vector2(0,12));
+            GenerateSea(chunk + new Vector2(0,-12));
+            GenerateSea(chunk + new Vector2(12,12));
+            GenerateSea(chunk + new Vector2(12,-12));
+            GenerateSea(chunk + new Vector2(-12,12));
+            GenerateSea(chunk + new Vector2(-12,-12));
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("Exception at seagen");
+        }
 	}
+    void GenerateSea(Vector2 pos)
+    {
+        bool e = true;
+        foreach (Transform t in GameObject.Find("Sea").transform)
+        {
+            if ((Vector2)t.position == pos)
+            {
+                e = false;
+            }
+        }
+        if (e)
+        {
+            Instantiate(SeaChunk, pos, Quaternion.identity, GameObject.Find("Sea").transform);
+        }
+    }
 }
