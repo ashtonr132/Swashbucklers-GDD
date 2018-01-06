@@ -27,7 +27,7 @@ public class SeaGen : MonoBehaviour {
         }
         catch (System.Exception)
         {
-            Debug.Log("Exception at seagen");
+            Debug.Log("Exception at seagen?, probably just on docks");
         }
 	}
     void GenerateSea(Vector2 pos)
