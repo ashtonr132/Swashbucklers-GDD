@@ -240,7 +240,7 @@ RectTransform:
   m_GameObject: {fileID: 94408331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
+  m_LocalScale: {x: 0.0333333, y: 0.033333, z: 1}
   m_Children: []
   m_Father: {fileID: 407573416}
   m_RootOrder: 2
@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 216917477}
   - component: {fileID: 216917479}
   - component: {fileID: 216917480}
+  - component: {fileID: 216917481}
   m_Layer: 0
   m_Name: Player_Ship
   m_TagString: Untagged
@@ -440,12 +441,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300042, guid: 0decfac52c22f7342b4d8b49a086cdff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10eae6133e4a1c7429e6fa001a5bcdd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
-  m_Size: {x: 1.21, y: 3.71}
+  m_Size: {x: 0.96, y: 1.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -500,6 +501,36 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0b4d03301bcd96d4285f9892b49c91e6, type: 3}
   - {fileID: 21300000, guid: 3c66a214d256c4448a0d29881c299dbb, type: 3}
   - {fileID: 21300000, guid: 5ac7ca70c529f1745bd938188d763ebf, type: 3}
+--- !u!60 &216917481
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 216917476}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 1.86}
+    newSize: {x: 0.96, y: 1.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.112013064, y: -0.9157632}
+      - {x: -0.13406593, y: -0.5111315}
+      - {x: -0.07159516, y: 0.41589513}
+      - {x: 0.100746594, y: 0.90869254}
+      - {x: 0.29247364, y: 0.45792133}
+      - {x: 0.35201317, y: -0.5065395}
 --- !u!1 &272007029
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,8 +777,9 @@ GameObject:
   m_Component:
   - component: {fileID: 417042630}
   - component: {fileID: 417042629}
+  - component: {fileID: 417042631}
   m_Layer: 0
-  m_Name: Music & Audio Listener
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +796,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f86711a7097e08a4aba0e8714db8601e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -846,6 +878,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &417042631
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 417042628}
+  m_Enabled: 1
 --- !u!1 &418208024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,7 +2142,6 @@ GameObject:
   - component: {fileID: 1629796074}
   - component: {fileID: 1629796077}
   - component: {fileID: 1629796076}
-  - component: {fileID: 1629796075}
   - component: {fileID: 1629796078}
   m_Layer: 0
   m_Name: Camera
@@ -2119,19 +2157,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629796073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -20}
+  m_LocalPosition: {x: 0, y: 1.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1629796075
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629796073}
-  m_Enabled: 1
 --- !u!124 &1629796076
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2505,8 +2536,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1882163922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.1, z: 1}
+  m_LocalPosition: {x: 0.11, y: -0.1, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.45, z: 1}
   m_Children: []
   m_Father: {fileID: 216917478}
   m_RootOrder: 0

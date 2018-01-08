@@ -222,6 +222,7 @@
     <Compile Include="Assets\ButtonHandler.cs" />
     <Compile Include="Assets\CameraAntiRotation.cs" />
     <Compile Include="Assets\Dock.cs" />
+    <Compile Include="Assets\EnemyBehavior.cs" />
     <Compile Include="Assets\PlayerControls.cs" />
     <Compile Include="Assets\SeaGen.cs" />
   </ItemGroup>

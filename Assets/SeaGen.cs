@@ -27,7 +27,7 @@ public class SeaGen : MonoBehaviour {
         }
         catch (System.Exception)
         {
-            Debug.Log("Exception at seagen?, probably just on docks");
+            //ignore, this will catch every time the ship isnt one a regular sea tile
         }
 	}
     void GenerateSea(Vector2 pos)
@@ -42,7 +42,8 @@ public class SeaGen : MonoBehaviour {
         }
         if (e)
         {
-            Instantiate(SeaChunk, pos, Quaternion.identity, GameObject.Find("Sea").transform);
+            GameObject SC = Instantiate(SeaChunk, pos, Quaternion.identity, GameObject.Find("Sea").transform);
+            SC.name = "Sea Chunk " + transform.childCount.ToString();
         }
     }
 }
