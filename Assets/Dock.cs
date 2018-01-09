@@ -12,11 +12,11 @@ public class Dock : MonoBehaviour {
 	}
     private void Update()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) >= 2f)
+        if (player != null && Vector2.Distance(player.transform.position, transform.position) >= 2f)
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
         }
-        if (Vector2.Distance(player.transform.position, transform.position) <= 2f && GetComponent<BoxCollider2D>().isTrigger)
+        if (player != null && Vector2.Distance(player.transform.position, transform.position) <= 2f && GetComponent<BoxCollider2D>().isTrigger)
         {
             SceneManager.LoadScene("Shipyard");
         }

@@ -8,9 +8,12 @@ public class CameraAntiRotation : MonoBehaviour {
 	void Start () {
         player = GameObject.Find("Player_Ship");
     }
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y +3, player.transform.position.z -20);
-	}
+        if (player != null)
+        {
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3, player.transform.position.z - 20);
+        }
+    }
 }

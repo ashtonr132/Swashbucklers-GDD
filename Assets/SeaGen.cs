@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SeaGen : MonoBehaviour {
     GameObject SeaChunk;
+    GameObject chunk;
 	// Use this for initialization
 	void Start ()
     {
@@ -15,15 +16,22 @@ public class SeaGen : MonoBehaviour {
     {
         try
         {
-            Vector2 chunk = Physics2D.OverlapPoint(GameObject.Find("Player_Ship").transform.position).transform.parent.position;
-            GenerateSea(chunk + new Vector2(12,0));
-            GenerateSea(chunk + new Vector2(-12,0));
-            GenerateSea(chunk + new Vector2(0,12));
-            GenerateSea(chunk + new Vector2(0,-12));
-            GenerateSea(chunk + new Vector2(12,12));
-            GenerateSea(chunk + new Vector2(12,-12));
-            GenerateSea(chunk + new Vector2(-12,12));
-            GenerateSea(chunk + new Vector2(-12,-12));
+            Collider2D[] overlaps = Physics2D.OverlapPointAll(GameObject.Find("Player_Ship").transform.position);
+            foreach (Collider2D cols in overlaps)
+            {
+                if (cols.transform.name.Contains("Chunk"))
+                {
+                    chunk = cols.gameObject;
+                }
+            }
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(12, 0));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(-12, 0));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(0, 12));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(0, -12));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(12, 12));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(12, -12));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(-12, 12));
+            GenerateSea((Vector2)chunk.transform.position + new Vector2(-12, -12));
         }
         catch (System.Exception)
         {
@@ -35,15 +43,28 @@ public class SeaGen : MonoBehaviour {
         bool e = true;
         foreach (Transform t in GameObject.Find("Sea").transform)
         {
-            if ((Vector2)t.position == pos)
+            if (t.name.Contains("Chunk"))
             {
-                e = false;
+                if ((Vector2)t.position == pos)
+                {
+                    e = false;
+                }
             }
         }
         if (e)
         {
             GameObject SC = Instantiate(SeaChunk, pos, Quaternion.identity, GameObject.Find("Sea").transform);
             SC.name = "Sea Chunk " + transform.childCount.ToString();
+        }
+        else
+        {
+            if (PlayerControls.enemies.Count > 0 )
+            {
+                GameObject enemy = Instantiate((GameObject)Resources.Load(PlayerControls.enemies[0]), pos, Quaternion.identity, null);
+                enemy.name = "Enemy " + PlayerControls.enemies[0];
+                PlayerControls.enemies.RemoveAt(0);
+                enemy.GetComponent<EnemyBehavior>().floataround = chunk;
+            }
         }
     }
 }
