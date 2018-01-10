@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Dock : MonoBehaviour {
-    GameObject player;
+    GameObject player, deathmessage;
 	// Use this for initialization
 	void Start ()
     {
         player = GameObject.Find("Player_Ship");
+        deathmessage = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
 	}
     private void Update()
     {
@@ -16,9 +17,9 @@ public class Dock : MonoBehaviour {
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
         }
-        if (player != null && Vector2.Distance(player.transform.position, transform.position) <= 2f && GetComponent<BoxCollider2D>().isTrigger)
+        if (player != null && deathmessage.activeSelf == false && Vector2.Distance(player.transform.position, transform.position) <= 2f && GetComponent<BoxCollider2D>().isTrigger)
         {
-            SceneManager.LoadScene("Shipyard");
+            SceneManager.LoadScene("Market");
         }
     }
 }

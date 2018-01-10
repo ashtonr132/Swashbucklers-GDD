@@ -513,7 +513,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Upgrade Sail;\nCost X;\nCurrent Value X;\nAffects;\nManeuverability \u2013
-    Turn Speed\n"
+    Turn Speed"
 --- !u!222 &526441880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -595,9 +595,7 @@ MonoBehaviour:
 
     Affects;
 
-    Ship Armour
-
-'
+    Ship Armour'
 --- !u!222 &527301053
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -985,7 +983,7 @@ GameObject:
   - component: {fileID: 985369019}
   - component: {fileID: 985369021}
   m_Layer: 0
-  m_Name: game song
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1887,9 +1885,7 @@ MonoBehaviour:
 
     Affects;
 
-    Health
-
-'
+    Health'
 --- !u!222 &1736783451
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1971,9 +1967,7 @@ MonoBehaviour:
 
     Affects;
 
-    CannonBall Damage
-
-'
+    CannonBall Damage'
 --- !u!222 &1797194354
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2055,9 +2049,7 @@ MonoBehaviour:
 
     Affects;
 
-    Cargo Capacity
-
-'
+    Cargo Capacity'
 --- !u!222 &1918930934
 CanvasRenderer:
   m_ObjectHideFlags: 0

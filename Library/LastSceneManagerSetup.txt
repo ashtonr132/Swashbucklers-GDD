@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Shipyard.unity
+- path: Assets/Naval Combat.unity
   isLoaded: 1
   isActive: 1

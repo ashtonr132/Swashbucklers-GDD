@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     internal AudioClip shootsound;
     void Start()
     {
-        if (transform.name == "Sloop")
+        if (transform.name.Contains("Sloop"))
         {
             gold = Random.Range(2, 8);
             Cargo = Random.Range(0,2);
@@ -20,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
             turnrate *= 1;
             quality = 0.8f;
         }
-        else if (transform.name == "Caravel")
+        else if (transform.name.Contains("Caravel"))
         {
             gold = Random.Range(4, 15);
             Cargo = Random.Range(1, 4);
@@ -29,7 +29,7 @@ public class EnemyBehavior : MonoBehaviour
             turnrate *= 1.2f;
             quality = 0.75f;
         }
-        else if (transform.name == "Brigantine")
+        else if (transform.name.Contains("Brigantine"))
         {
             gold = Random.Range(8, 25);
             Cargo = Random.Range(3, 8);
@@ -48,7 +48,9 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (HullHp <= 0)
         {
-            if (transform.name == "Sloop")
+            transform.name = transform.name.Replace("Enemy ", "");
+            PlayerControls.enemies.Remove(transform.name);
+            if (transform.name.Contains("Sloop"))
             {
                 for (int i = 0; i <= Cargo; i++)
                 {
@@ -83,7 +85,7 @@ public class EnemyBehavior : MonoBehaviour
                     }
                 }
             }
-            if (transform.name == "Caravel")
+            if (transform.name.Contains("Caravel"))
             {
                 for (int i = 0; i <= Cargo; i++)
                 {
@@ -126,7 +128,7 @@ public class EnemyBehavior : MonoBehaviour
                     }
                 }
             }
-            if (transform.name == "Brigantine")
+            if (transform.name.Contains("Brigantine"))
             {
                 int loot = Random.Range(1, 100);
                 if (loot <= 18)
@@ -192,12 +194,12 @@ public class EnemyBehavior : MonoBehaviour
         }
         if (player != null && Vector2.Distance(transform.position, player.transform.position) >= 12)
         {
-            if (Physics2D.OverlapPoint(transform.position).gameObject == floataround)
+            if (Vector3.Distance(Physics2D.OverlapPoint(transform.position).gameObject.transform.position, floataround.transform.position) <= 0.5f)
             {
                 floataround = GameObject.Find("Sea").transform.GetChild(Random.Range(0, GameObject.Find("Sea").transform.childCount)).GetChild(Random.Range(0, 8)).gameObject;
-                Vector3 diff = (floataround.transform.position - transform.position).normalized;
-                transform.rotation = Quaternion.Euler(0f, 0f, (Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg) - 90);
             }
+            Vector3 diff = (floataround.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.Euler(0f, 0f, (Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg) - 90);
             rb.velocity = (rb.velocity / 10 * 9) + (Vector2)transform.up / 10;
             rb.velocity = rb.velocity.normalized * Mathf.Clamp(Mathf.Abs(rb.velocity.magnitude), MinSpeed, MaxSpeed);
         }
@@ -260,6 +262,7 @@ public class EnemyBehavior : MonoBehaviour
         cargo.GetComponent<SpriteRenderer>().sortingOrder = 1;
         cargo.transform.localScale /= 15;
         cargo.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Cargo/crate");
+        cargo.GetComponent<Rigidbody2D>().gravityScale = 0;
         Destroy(cargo, 20);
     }
 }

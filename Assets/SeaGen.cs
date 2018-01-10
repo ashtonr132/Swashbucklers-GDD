@@ -58,7 +58,7 @@ public class SeaGen : MonoBehaviour {
         }
         else
         {
-            if (PlayerControls.enemies.Count > 0 )
+            if (PlayerControls.enemies.Count > 0 && Random.Range(1,60 * transform.childCount) > 59* transform.childCount)
             {
                 GameObject enemy = Instantiate((GameObject)Resources.Load(PlayerControls.enemies[0]), pos, Quaternion.identity, null);
                 enemy.name = "Enemy " + PlayerControls.enemies[0];
